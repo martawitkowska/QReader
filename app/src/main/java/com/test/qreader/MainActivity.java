@@ -15,6 +15,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     BarcodeDetector barcodeDetector;
     CameraSource cameraSource;
     final int requestCameraPermissionID = 1001;
+    boolean firstLoop = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,42 +78,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> QRcodes = detections.getDetectedItems();
-                if (QRcodes.size() != 0) {
-                    QResult.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Create vibrations
+                if (QRcodes.size() != 0 && firstLoop) {
+                    firstLoop = false;
 
-                            Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                            vibrator.vibrate(100);
+                    Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(100);
 
-                            QResult.setText(QRcodes.valueAt(0).displayValue);
-
-//                            Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
-//                            intent.putExtra("plantName", QRcodes.valueAt(0).displayValue);
-//
-////                            cameraSource.stop();
-//
-//                            startActivity(intent);
-                        }
-                    });
-
-//                    Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-//                    vibrator.vibrate(100);
-//
-//                    Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
-//                    intent.putExtra("plantName", QRcodes.valueAt(0).displayValue);
-//                    startActivity(intent);
-////                    finish();
-//                    try {
-//                        wait(2000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+                    Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
+                    intent.putExtra("plantName", QRcodes.valueAt(0).displayValue);
+                    startActivity(intent);
+//                    finish();
                 }
             }
         });
-
 
     }
 
