@@ -3,6 +3,7 @@ package com.test.qreader;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -11,7 +12,10 @@ import android.widget.TextView;
 
 public class PhotoActivity extends AppCompatActivity {
 
-    TextView QResult;
+    ImageView photo;
+    TextView englishName;
+    TextView latinName;
+    Plant plant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +23,17 @@ public class PhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo);
 
         Intent intent = getIntent();
-        String plantName = intent.getStringExtra("plantName");
-        QResult = findViewById(R.id.QRtextView);
-        QResult.setText(plantName);
+        String QRplantName = intent.getStringExtra("plantName");
+
+        plant = Repository.getPlants().get(QRplantName);
+
+        photo = findViewById(R.id.photoImageView);
+        englishName = findViewById(R.id.englishTextView);
+        latinName = findViewById(R.id.latinTextView);
+
+        photo.setImageResource(plant.photoResource);
+        englishName.setText(plant.englishName);
+        latinName.setText(plant.latinName);
     }
 
 }

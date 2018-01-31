@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">QReader</string>
     <string name="QResult">Focus camera on QR code</string>
+    <string name="dialogMessage">Please wait until all pictures will be loaded into the application</string>
+
+    <string name="englishPlantName">English name</string>
+    <string name="latinPlantName">Latin name</string>
+    <string name="footer">Arboretum w Wojsławicach (2018)</string>
 </resources>

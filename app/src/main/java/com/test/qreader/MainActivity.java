@@ -2,6 +2,7 @@ package com.test.qreader;
 
 import android.Manifest;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,11 +38,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Adding extra popup window */
+//        ProgressDialog dialog=new ProgressDialog(this);
+//        dialog.setMessage(getResources().getString(R.string.dialogMessage));
+//        dialog.setCancelable(false);
+//        dialog.setInverseBackgroundForced(false);
+//        dialog.show();
+
         cameraPreview = findViewById(R.id.cameraSurfaceView);
         QResult = findViewById(R.id.QRtext);
 
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
         cameraSource = new CameraSource.Builder(this, barcodeDetector).build();
+
+        /* Hiding extra popup window */
+//        dialog.hide();
 
         cameraPreview.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
