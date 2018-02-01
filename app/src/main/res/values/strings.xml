@@ -6,4 +6,7 @@
     <string name="englishPlantName">English name</string>
     <string name="latinPlantName">Latin name</string>
     <string name="footer">Arboretum w Wojsławicach (2018)</string>
+
+    <!-- Can't be used in non activity singleton class -->
+    <string name="QRdefaultMessage">We are sorry,\nQR code has not been recognided</string>
 </resources>

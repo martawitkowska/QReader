@@ -20,13 +20,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/parrotia_persica" />
 
-
+    <!-- Added extra 40 dp (the same as marginLeft in photoImageView) to marginLeft -->
     <TextView
         android:id="@+id/englishTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="55dp"
         android:layout_marginTop="15dp"
         android:textAlignment="center"
         android:text="@string/englishPlantName"
@@ -41,25 +41,26 @@
         android:id="@+id/latinTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="10dp"
         android:text="@string/latinPlantName"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photoImageView"
+        app:layout_constraintEnd_toEndOf="@+id/englishTextView"
+        app:layout_constraintStart_toStartOf="@+id/englishTextView"
         app:layout_constraintTop_toBottomOf="@+id/englishTextView" />
 
+
+    <!-- Added extra 40 dp (the same as marginLeft in photoImageView) to marginLeft -->
     <TextView
         android:id="@+id/footerTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="50dp"
         android:text="@string/footer"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/photoImageView"

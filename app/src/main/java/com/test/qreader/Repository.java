@@ -24,9 +24,13 @@ public final class Repository {
     public static Map<String, Plant> getPlants() {
         return repo.QRplants;
     }
+    public static Plant getDefaultPlant() { return repo.QRplants.get("Default"); }
 
     private void generatePlants() {
-        Plant plant = new Plant(1, "Parrotia persica", "Persian ironwood", "Parrotia persica", R.drawable.parrotia_persica);
+        Plant plant = new Plant(0, "Default", "", "We are sorry,\nQR code has not been recognized", R.drawable.plant);
+        QRplants.put(plant.QRkey, plant);
+
+        plant = new Plant(1, "Parrotia persica", "Persian ironwood", "Parrotia persica", R.drawable.parrotia_persica);
         QRplants.put(plant.QRkey, plant);
         plant = new Plant(2, "Matteuccia", "Matteuccia orientalis", "Matteuccia", R.drawable.matteucia);
         QRplants.put(plant.QRkey, plant);

@@ -25,7 +25,10 @@ public class PhotoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String QRplantName = intent.getStringExtra("plantName");
 
-        plant = Repository.getPlants().get(QRplantName);
+        if (Repository.getPlants().containsKey(QRplantName))
+            plant = Repository.getPlants().get(QRplantName);
+        else
+            plant = Repository.getDefaultPlant();
 
         photo = findViewById(R.id.photoImageView);
         englishName = findViewById(R.id.englishTextView);
