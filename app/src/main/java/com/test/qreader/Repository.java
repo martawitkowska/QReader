@@ -12,6 +12,7 @@ import java.util.Set;
  */
 
 
+
 public final class Repository {
 
     private Repository() {
@@ -26,7 +27,8 @@ public final class Repository {
     }
     public static Plant getDefaultPlant() { return repo.QRplants.get("Default"); }
 
-    private void generatePlants() {
+    private void generatePlants()
+    {
         Plant plant = new Plant(0, "Default", "", "We are sorry,\nQR code has not been recognized", R.drawable.plant);
         QRplants.put(plant.QRkey, plant);
 

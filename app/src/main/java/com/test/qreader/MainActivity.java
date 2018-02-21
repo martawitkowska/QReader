@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     final int requestCameraPermissionID = 1001;
     boolean firstLoop = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,13 +93,14 @@ public class MainActivity extends AppCompatActivity {
                 if (QRcodes.size() != 0 && firstLoop) {
                     firstLoop = false;
 
-                    Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                    vibrator.vibrate(100);
-
                     Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
                     intent.putExtra("plantName", QRcodes.valueAt(0).displayValue);
                     startActivity(intent);
 //                    finish();
+
+                    Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(200);
+
                 }
             }
         });
